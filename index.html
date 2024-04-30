@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Report Card</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+  .container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  h1, h2, h3 {
+    text-align: center;
+  }
+  .student-details {
+    margin-bottom: 20px;
+  }
+  .student-details p {
+    margin: 5px 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+  }
+  .answer-sheet {
+    margin-top: 20px;
+    text-align: center;
+  }
+  .remarks {
+    margin-top: 20px;
+  }
+  .dialog-container {
+    display: none; /* Initially hide the dialog container */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 300px;
+    z-index: 1000;
+  }
+  .dialog-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .teacher-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: block;
+  }
+  .form-group {
+    margin-bottom: 20px;
+  }
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  .form-group input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  .stars {
+    display: flex;
+    justify-content: center;
+  }
+  .star {
+    font-size: 30px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  .star:hover,
+  .star.active {
+    color: gold;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1><font color=red><b>Student Report Card</b></font></h1>
+  <div class="student-details">
+    <h2>Student Details</h2>
+    <p><strong>Name:</strong> Anurag Yadav</p>
+    <p><strong>Roll Number:</strong> 12345</p>
+    <p><strong>Class:</strong> 12th</p>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Subject</th>
+        <th>Grade</th>
+        <th>Number</th>
+        <th>Percentage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Math</td>
+        <td>A</td>
+        <td>95</td>
+        <td>95%</td>
+      </tr>
+      <tr>
+        <td>Science</td>
+        <td>B</td>
+        <td>85</td>
+        <td>85%</td>
+      </tr>
+      <tr>
+        <td>English</td>
+        <td>A+</td>
+        <td>98</td>
+        <td>98%</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="answer-sheet">
+    <h3>Answer Sheet</h3>
+    <img src="https://i.ibb.co/bRYZ2sg/1000245042.jpg" alt="Answer Sheet" width="90%">
+  </div>
+  <div class="remarks">
+    <h3>Remarks</h3>
+    <p>Excellent performance overall.</p>
+    <button onclick="showTeacherInfo()"><b>View Subject teacher details</b> ❣️</button> <!-- Add button to show teacher information -->
+  </div>
+</div>
+
+<div class="dialog-container">
+  <img class="teacher-img" src="https://i.ibb.co/fv4Y3Y6/Screenshot-2021-11-07-20-17-05-556-com-whatsapp-w4b-removebg-preview.png" alt="Teacher Image">
+  <h2>Class Teacher of 12th ❣️</h2>
+  <div class="form-group">
+    <label for="name">Teacher Name / details</label>
+    <input type="text" id="name" name="name" value="M.S. Yadav (Maths, Physics, Allrounder)" readonly>
+  </div>
+  <div class="stars">
+    <span class="star" onclick="rateTeacher(1)">★</span>
+    <span class="star" onclick="rateTeacher(2)">★</span>
+    <span class="star" onclick="rateTeacher(3)">★</span>
+    <span class="star" onclick="rateTeacher(4)">★</span>
+    <span class="star" onclick="rateTeacher(5)">★</span>
+  </div>
+</div>
+
+<script>
+  function rateTeacher(rating) {
+    var stars = document.getElementsByClassName("star");
+    for (var i = 0; i < stars.length; i++) {
+      if (i < rating) {
+        stars[i].classList.add("active");
+      } else {
+        stars[i].classList.remove("active");
+      }
+    }
+  }
+  
+  function showTeacherInfo() {
+    var dialog = document.querySelector('.dialog-container');
+    dialog.style.display = "block"; // Show the teacher information dialog
+  }
+</script>
+</body>
+</html>
